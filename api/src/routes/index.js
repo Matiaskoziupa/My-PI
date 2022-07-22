@@ -10,23 +10,10 @@ const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-const getApiInfo= async()=>{
-    const apiInfo= await axios.get("https://api.rawg.io/api/games?key=e145758c71a14c72bd4afd6699d4d322");
-    const apiData= apiInfo.data.results.map((s)=>{
-        const obj={    
-            name:s.name,
-            genres:s.genres.map(s=>s.name),
-            image:s.background_image,
-        }   
-    return obj;
-    })
-}
-const getDbInfo= async()=>{
 
-}
 
 router.get("/videogames", async (req, res)=>{
-    try{
+    const {name}=req.query;
         const apiInfo= await axios.get("https://api.rawg.io/api/games?key=e145758c71a14c72bd4afd6699d4d322");
         const apiData= apiInfo.data.results.map((s)=>{
             const obj={    
@@ -36,12 +23,20 @@ router.get("/videogames", async (req, res)=>{
             }   
         return obj;
         })
-        const getDbInfo= await Videogame.findAll({include:[{model:Genre}]});
-        const suma=[...apiData,...getDbInfo];
-        res.status(200).json(suma);
-    } catch(error){
-        res.status(404).json({error:error.message});
-    }
+        try{
+            const getDbInfo= await Videogame.findAll({include:[{model:Genre}]});
+            const suma=[...apiData,...getDbInfo];
+            if(name){
+                let nameVideogame= await suma.filter(s=> s.name.toLowerCase().includes(name.toLowerCase()))
+                nameVideogame.length?
+                res.status(200).json(nameVideogame) :
+                res.status(404).send("Not Found")  
+            } else{
+                res.status(200).json(suma);
+            }
+        }catch(error){
+            res.status(404).json({error:error.message})
+        }
 })
 router.get("/genres", (req, res)=>{
     try{
@@ -54,7 +49,7 @@ router.get("/genres", (req, res)=>{
                 return obj;
             });
             Genre.bulkCreate(aux)
-            res.json({msg:"Success"});
+            res.json(aux);
         });
     } catch(error){
         res.status(404).json({error:error.message})
@@ -104,7 +99,14 @@ router.get("/genres", (req, res)=>{
 // })
 router.post("/videogames", async (req, res) => {
     const {background_image, name, release_date, genres, rating, description, platforms, createdInDb} = req.body;
+    if(!name || !description || !platforms) return res.status(400).send("Faltan enviar datos obligatorios")
+    const nameRepeat= await Videogame.findOne({
+        where: {name: name.toLowerCase()}
+    });
+    if(nameRepeat) return res.status(400).send("name repeat")
+    console.log(nameRepeat)
     
+    //falta validacion nombreapi
         const newVideogame = await Videogame.create({
             background_image,
             name,
@@ -180,23 +182,6 @@ router.get("/videogame/:id", async (req, res)=>{
 //         return console.log(err)
 //     }
 // })
-router.get("/games/:name", async(req, res)=>{
-    const {name}=req.params;
-    const apiInfo= await axios.get("https://api.rawg.io/api/games?key=e145758c71a14c72bd4afd6699d4d322")
-    const apiRta=apiInfo.data.results.map((s)=>{
-        const obj={
-            name:s.name,
-        }
-        return obj;
-    })
-    const getDbInfo= await Videogame.findAll({include:[{model:Genre}]});
-    const suma=[...apiRta,...getDbInfo];
-    if(name){
-        let nameVideogame= await suma.filter(s=> s.name.toLowerCase().includes(name.toLowerCase()))
-        nameVideogame.length?
-        res.status(200).json(nameVideogame) :
-        res.status(404).json("Not Found")
-    }
-})
+
 
 module.exports = router;
