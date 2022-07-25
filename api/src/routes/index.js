@@ -15,6 +15,12 @@ const router = Router();
 router.get("/videogames", async (req, res)=>{
     const {name}=req.query;
         const apiInfo= await axios.get("https://api.rawg.io/api/games?key=e145758c71a14c72bd4afd6699d4d322");
+        // const apiInfo2= await axios.get("https://api.rawg.io/api/games?key=e145758c71a14c72bd4afd6699d4d322&page=2");
+        // const apiInfo3= await axios.get("https://api.rawg.io/api/games?key=e145758c71a14c72bd4afd6699d4d322&page=3");
+        // const apiInfo4= await axios.get("https://api.rawg.io/api/games?key=e145758c71a14c72bd4afd6699d4d322&page=4");
+        // const apiInfo5= await axios.get("https://api.rawg.io/api/games?key=e145758c71a14c72bd4afd6699d4d322&page=5");
+        // const apiInfoTotal=[...apiInfo,...apiInfo2,...apiInfo3,...apiInfo4,...apiInfo5];
+
         const apiData= apiInfo.data.results.map((s)=>{
             const obj={    
             name:s.name,
@@ -23,9 +29,46 @@ router.get("/videogames", async (req, res)=>{
             }   
         return obj;
         })
+        const apiInfo2= await axios.get(apiInfo.data.next);
+        const apiData2= apiInfo2.data.results.map((s)=>{
+            const obj={    
+            name:s.name,
+            genres:s.genres.map(s=>s.name),
+            image:s.background_image,
+            }   
+        return obj;
+        })
+        const apiInfo3= await axios.get(apiInfo2.data.next);
+        const apiData3= apiInfo3.data.results.map((s)=>{
+            const obj={    
+            name:s.name,
+            genres:s.genres.map(s=>s.name),
+            image:s.background_image,
+            }   
+        return obj;
+        })
+        const apiInfo4= await axios.get(apiInfo3.data.next);
+        const apiData4= apiInfo4.data.results.map((s)=>{
+            const obj={    
+            name:s.name,
+            genres:s.genres.map(s=>s.name),
+            image:s.background_image,
+            }   
+        return obj;
+        })
+        const apiInfo5= await axios.get(apiInfo4.data.next);
+        const apiData5= apiInfo5.data.results.map((s)=>{
+            const obj={    
+            name:s.name,
+            genres:s.genres.map(s=>s.name),
+            image:s.background_image,
+            }   
+        return obj;
+        })
+        const apiDataTotal=[...apiData,...apiData2,...apiData3,...apiData4,...apiData5];
         try{
             const getDbInfo= await Videogame.findAll({include:[{model:Genre}]});
-            const suma=[...apiData,...getDbInfo];
+            const suma=[...apiDataTotal,...getDbInfo];
             if(name){
                 let nameVideogame= await suma.filter(s=> s.name.toLowerCase().includes(name.toLowerCase()))
                 nameVideogame.length?
