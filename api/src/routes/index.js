@@ -2,6 +2,7 @@ require('dotenv').config();
 const axios= require("axios");
 const {Videogame, Genre}= require("../db")
 const { Router } = require('express');
+const { getAllGenres } = require('./controllers');
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -483,27 +484,35 @@ try {
 })
 // GET a /genres
 
-router.get('/genres', async (req, res) => {
-const genresDb = await Genre.findAll();
+// router.get('/genres', async (req, res) => {
+// const genresDb = await Genre.findAll();
 
-const response = await axios.get(`https://api.rawg.io/api/genres?key=e145758c71a14c72bd4afd6699d4d322`);
-const genres = response.data.results;
-genres.forEach(async (g)=> {
-    await Genre.findOrCreate({
-        where: {
-            name: g.name
-        }
-    })
-})
-res.send(genresDb)
+// const response = await axios.get(`https://api.rawg.io/api/genres?key=e145758c71a14c72bd4afd6699d4d322`);
+// const genres = response.data.results;
+// genres.forEach(async (g)=> {
+//     await Genre.findOrCreate({
+//         where: {
+//             name: g.name
+//         }
+//     })
+// })
+// res.send(genresDb)
+// })
+router.get("/genres", async (req, res)=>{
+    try{
+        let genres= await getAllGenres();
+        res.json(genres);
+    } catch(error){
+        res.send(error)
+    }
 })
 //POST a /videogame
 
 router.post('/videogame', async (req, res, next) => {
-const {img, name, released, genres, rating, description, platforms} = req.body;
+const {background_image, name, released, genres, rating, description, platforms} = req.body;
 try {
     const newVideogame = await Videogame.create({
-        img,
+        background_image,
         name,
         released,
         genres,

@@ -24,7 +24,6 @@ export default function Card({name,image,genres}){
             <div className="card_items">
                 <h2>{name}</h2>
                 <img src= {image} alt="Not found" width="250px" height="200px" ></img>
-                
                 <h4>{ genres.join(" | ")}</h4>
             </div> 
         </div>      

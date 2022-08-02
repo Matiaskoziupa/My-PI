@@ -224,7 +224,7 @@ export default function Create(){
         released:"",
         rating:"",
         description:"",
-        image:"",
+        background_image:"",
         platforms:[],
         genre:[],
     })
@@ -260,7 +260,7 @@ export default function Create(){
             released:"",
             rating:"",
             description:"",
-            image:"",
+            background_image:"",
             platforms:"",
             genre:[],       
         })
@@ -389,19 +389,20 @@ export default function Create(){
                     <label>Image:</label>
                     <input
                     type="text"
-                    value={input.image}
-                    name="image"
+                    value={input.background_image}
+                    name="background_image"
                     onChange={(e)=>handleChange(e)}
                     />
                 </div>
                 <div>
-                    <label> Platforms</label>
+                    <label> Platforms:</label>
                     <select required name="platforms"  onChange={(e) => handleChangePlatforms(e)}>
                     <option hidden={true}>Select some platforms</option>
                     {platforms.map(pl => <option value={pl}>{pl}</option>)}
                     </select>
                 </div>
-                <select onChange={(e)=>handleSelect(e)}>
+                <label>Genres:</label>
+                <select required name="genres" onChange={(e)=>handleSelect(e)}>
                     {genres&&genres.map((s)=>(
                         <option value={s.name}>{s.name}</option>
                     ))}

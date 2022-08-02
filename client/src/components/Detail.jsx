@@ -65,13 +65,25 @@ useEffect(()=>{
             </Link>
             <div>
                 <div>
-                    <h1>{myVideo&&myVideo.name}</h1>
-                    <h5>{myVideo&&myVideo.platforms?.join(" | ")} </h5>
-                    <h2>{myVideo&&myVideo.genres?.join(" | ") } : {myVideo&&myVideo.genre?.join(" | ")}</h2>
+                    <h1>Name: {myVideo&&myVideo.name}</h1>
+                    <h5>Platforms: {myVideo&&myVideo.platforms?.join(" | ")} </h5>
+                    {/* <h2>{myVideo&&myVideo.genres?.join(" | ") }</h2> */}
+                    <h2> Genres: {myVideo&&myVideo.createInDb? myVideo&&myVideo.genres.map((e,i)=>{
+                        return i===myVideo.genres.length-1
+                        ? e.name 
+                        : e.name + " - ";
+                    })
+                    :
+                    myVideo&&myVideo.genres&&
+                    myVideo&&myVideo.genres.map((e,i)=>{
+                        return i=== myVideo.genres.length - 1? e:e + " - ";
+                    })
+                    }
+                    </h2>
                     <h4>Released: {myVideo&&myVideo.releaseDate} : {myVideo&&myVideo.released}</h4>
                     <h4>Rating: {myVideo&&myVideo.rating}</h4>
                 </div>
-                <img src={myVideo&&myVideo.img? myVideo&&myVideo.img : myVideo&&myVideo.background_image} />
+                <img src={myVideo&&myVideo.background_image} alt="Not found" width="250px" height="200px" />
                <div>
                  
              <p className="p" dangerouslySetInnerHTML={{__html: myVideo&&myVideo.description}}></p>
