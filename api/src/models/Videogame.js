@@ -26,11 +26,12 @@ module.exports = (sequelize) => {
       type: DataTypes.REAL,
     },
     platforms:{
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false,
     },
     image:{
       type: DataTypes.STRING,
+      allowNull:true
     },
     createdInDb:{
       type:DataTypes.BOOLEAN,
@@ -38,8 +39,8 @@ module.exports = (sequelize) => {
       defaultValue: true,
     }
   },
-  {
-    timestamps: false,
-  }
+  // {
+  //   timestamps: false,
+  // }
   );
 };

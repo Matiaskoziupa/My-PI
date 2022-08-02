@@ -26,10 +26,8 @@ console.log(allGames)
 
 
  useEffect(()=>{
-    if(!allGames){
-        return dispatch(getVideogames());
-    }
- },[dispatch, allGames]) 
+    dispatch(getVideogames());
+},[dispatch])
 
       
     function handleClick(e){
@@ -50,14 +48,14 @@ dispatch(getVideogames());
         dispatch(filterCreated(e.target.value)) 
         setCurrentPage(1) 
     }
-    const [orden, setOrden]= useState("")
+    // const [orden, setOrden]= useState("")
     function handlefilterorderbyRating(e){
         e.preventDefault();
         dispatch(filterByRating(e.target.value))
         setCurrentPage(1)
         setOrden(`Ordenado ${e.target.value}`)
     }
-    
+    const [orden, setOrden]= useState("")
     function handleSort(e){
         e.preventDefault()
         dispatch(orderByName(e.target.value));
@@ -67,7 +65,7 @@ dispatch(getVideogames());
     return(
         <div>
             
-            <Link to="/videogame"><button>Create videogame</button></Link>
+            <Link to="/videogames"><button>Create videogame</button></Link>
             <h1>Welcome to my page</h1>
             <h3><SearchBar/></h3>
             <button onClick={(e)=>handleClick(e)}>Reload all games</button>
@@ -115,8 +113,8 @@ dispatch(getVideogames());
             {currentVideos&&currentVideos.map((s)=>{
                 return(
                     <div>
-                        <Link to={"/home/" + s.id}>
-                            <Card name={s.name} image={s.image} genres={s.genres} key={s.id}/>
+                        <Link key={s.id} to={`/videogame/${s.id}`}>
+                            <Card name={s.name} image={s.background_image} genres={s.genres}/>
                         </Link>
                     </div>
                 );

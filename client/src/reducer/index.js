@@ -1,8 +1,9 @@
-import {GET_VIDEOGAMES, FILTER_CREATED, FILTER_BY_RATING, ORDER_BY_NAME, GET_GENRES, FILTER_BY_GENRE, GET_NAME_VIDEOGAMES} from "../actions/index.js";
+import {GET_VIDEOGAMES, FILTER_CREATED, FILTER_BY_RATING, ORDER_BY_NAME, GET_GENRES, FILTER_BY_GENRE, GET_NAME_VIDEOGAMES, GET_DETAIL} from "../actions/index.js";
 
 
 const initialState = {
     videogames: [],
+    detail:[],
     allVideogames: [],
     genres: []
 }
@@ -22,30 +23,30 @@ function rootReducer(state=initialState, action){
                     ...state,
                     videogames:action.payload === "All" ? state.allVideogames : createdFilter
                 }
-                case ORDER_BY_NAME:
-                    let sortArr = action.payload === "asc"? 
-                    state.videogames.sort(function(a,b){
-                        if( a.name > b.name){
-                            return 1;
-                        }   
-                        if(b.name > a.name){
-                            return -1;
-                        }
-                        return 0;
-                    }): 
-                    state.videogames.sort(function(a,b){
-                        if(a.name>b.name){
-                            return -1;
-                        }
-                        if(b.name>a.name){
-                            return 1;
-                        }
-                        return 0;
-                    })
-                    return{
-                        ...state,
-                        videogames:sortArr
-                    }
+                // case ORDER_BY_NAME:
+                //     let sortArr = action.payload === "asc"? 
+                //     state.videogames.sort(function(a,b){
+                //         if( a.name > b.name){
+                //             return 1;
+                //         }   
+                //         if(b.name > a.name){
+                //             return -1;
+                //         }
+                //         return 0;
+                //     }): 
+                //     state.videogames.sort(function(a,b){
+                //         if(a.name>b.name){
+                //             return -1;
+                //         }
+                //         if(b.name>a.name){
+                //             return 1;
+                //         }
+                //         return 0;
+                //     })
+                //     return{
+                //         ...state,
+                //         videogames:sortArr
+                //     }
                     case FILTER_BY_RATING:
                         let sortedArr2 = action.payload === 'asc'?
                         state.videogames.sort(function(a,b){
@@ -70,11 +71,40 @@ function rootReducer(state=initialState, action){
                             ...state,
                             videogames:sortedArr2
                         }
+                        case ORDER_BY_NAME:
+                    let sortArr = action.payload === "asc"? 
+                    state.videogames.sort(function(a,b){
+                        if( a.name > b.name){
+                            return 1;
+                        }   
+                        if(b.name > a.name){
+                            return -1;
+                        }
+                        return 0;
+                    }): 
+                    state.videogames.sort(function(a,b){
+                        if(a.name>b.name){
+                            return -1;
+                        }
+                        if(b.name>a.name){
+                            return 1;
+                        }
+                        return 0;
+                    })
+                    return{
+                        ...state,
+                        videogames:sortArr
+                    }
                     case GET_NAME_VIDEOGAMES:
                         return{
                             ...state,
-                            videogames:action.payload
+                            videogames:action.payload.err?[{Error:"No videogames Found"}] : action.payload,
                         }
+                        case GET_DETAIL:
+                                        return {
+                                            ...state,
+                                            detail:action.payload
+                                        }
                         case "POST_VIDEOGAMES":
                             return{
                                 ...state,
@@ -94,6 +124,7 @@ function rootReducer(state=initialState, action){
                                         videogames : genreFilter
                         
                                     };
+                                    
                                     default:
                                         return{
                                             state
