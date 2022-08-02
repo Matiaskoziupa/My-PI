@@ -67,9 +67,9 @@ useEffect(()=>{
                 <div>
                     <h1>Name: {myVideo&&myVideo.name}</h1>
                     <h5>Platforms: {myVideo&&myVideo.platforms?.join(" | ")} </h5>
-                    {/* <h2>{myVideo&&myVideo.genres?.join(" | ") }</h2> */}
-                    <h2> Genres: {myVideo&&myVideo.createInDb? myVideo&&myVideo.genres.map((e,i)=>{
-                        return i===myVideo.genres.length-1
+                    <h2>{myVideo&&myVideo.genres?.join(" | ")} </h2>
+                    {/* <h2> Genres: {myVideo&&myVideo.createInDb? myVideo&&myVideo.genre.map((e,i)=>{
+                        return i===myVideo.genre.length-1
                         ? e.name 
                         : e.name + " - ";
                     })
@@ -79,7 +79,7 @@ useEffect(()=>{
                         return i=== myVideo.genres.length - 1? e:e + " - ";
                     })
                     }
-                    </h2>
+                    </h2> */}
                     <h4>Released: {myVideo&&myVideo.releaseDate} : {myVideo&&myVideo.released}</h4>
                     <h4>Rating: {myVideo&&myVideo.rating}</h4>
                 </div>

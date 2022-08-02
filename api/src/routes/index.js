@@ -509,54 +509,59 @@ router.get("/genres", async (req, res)=>{
 //POST a /videogame
 
 router.post('/videogame', async (req, res, next) => {
+// const {background_image, name, released, genres, rating, description, platforms} = req.body;
+// try {
+//     const newVideogame = await Videogame.create({
+//         background_image,
+//         name,
+//         released,
+//         genres,
+//         rating,
+//         description,
+//         platforms
+//     });
+//     genres?.forEach(async g => {
+//         var foundGenre = await Genre.findOne({
+//             where: {name: genres}
+//         });
+//         newVideogame.addGenre(foundGenre);
+//     });
+//     res.send(newVideogame);
+// } catch (error) {
+//     next(error)
+// }
+// });
+
+
+
+
 const {background_image, name, released, genres, rating, description, platforms} = req.body;
-try {
-    const newVideogame = await Videogame.create({
-        background_image,
+try{
+    let newVideogame=await Videogame.create({
         name,
-        released,
-        genres,
-        rating,
         description,
-        platforms
+        background_image,
+        released,
+        rating,
+        platforms,
     });
-    genres?.forEach(async g => {
-        var foundGenre = await Genre.findOne({
-            where: {name: genres}
-        });
-        newVideogame.addGenre(foundGenre);
+    let genreDb= await Genre.findAll({
+        where: {
+            name:
+            genres
+        },
     });
-    res.send(newVideogame);
-} catch (error) {
-    next(error)
+    newVideogame.addGenre(genreDb);
+    res.send("Videogame created")
+} catch(error){
+    console.log(error)
 }
-});
+})
 
 
 
 
-
-
-
-
-// const {name, description, release_date, rating, platforms, image, genres} = req.body
-//     try {
-//         let genresArr = await Genre.findAll()
-//         genresArr = genresArr.filter(g => genres.includes(g.dataValues.name))
-//         const newVideoGame = await Videogame.create({
-//             name,
-//             description,
-//             release_date,
-//             rating, 
-//             platforms,
-//             image,
-//         })
-//         await newVideoGame.setGenres(genresArr.flat())
-//         res.send(newVideoGame)
-//     } catch (error) {
-//         next(error)
-//     }
-// })
+//
 
 
 // //put

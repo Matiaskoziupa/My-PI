@@ -226,7 +226,7 @@ export default function Create(){
         description:"",
         background_image:"",
         platforms:[],
-        genre:[],
+        genres:[],
     })
 
     function handleChange(e){
@@ -243,7 +243,7 @@ export default function Create(){
     function handleSelect(e){
         setInput({
             ...input,
-            genre:[...input.genre, e.target.value]
+            genres:[...input.genres, e.target.value]
         })
     }
 
@@ -262,7 +262,7 @@ export default function Create(){
             description:"",
             background_image:"",
             platforms:"",
-            genre:[],       
+            genres:[],       
         })
         history.push("/home")
     }
@@ -408,7 +408,7 @@ export default function Create(){
                     ))}
                 </select>
                 <ul><li> {input.platforms.map(g=> g + ",")}</li></ul>
-                <ul><li>{input.genre.map(s=>s + ",")}</li></ul>
+                <ul><li>{input.genres.map(s=>s + ",")}</li></ul>
                 <button type="submit">Create videogame</button>
             </form>
         </div>

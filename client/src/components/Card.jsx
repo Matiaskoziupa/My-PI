@@ -16,7 +16,7 @@ import { useLinkClickHandler } from "react-router-dom";
 
 import Detail from "./Detail";
 import { Link } from "react-router-dom";
-
+import "./Card.css"
 export default function Card({name,image,genres}){
 
     return (

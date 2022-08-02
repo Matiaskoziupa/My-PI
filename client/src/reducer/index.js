@@ -72,29 +72,29 @@ function rootReducer(state=initialState, action){
                             videogames:sortedArr2
                         }
                         case ORDER_BY_NAME:
-                    let sortArr = action.payload === "asc"? 
-                    state.videogames.sort(function(a,b){
-                        if( a.name > b.name){
-                            return 1;
-                        }   
-                        if(b.name > a.name){
-                            return -1;
-                        }
-                        return 0;
-                    }): 
-                    state.videogames.sort(function(a,b){
-                        if(a.name>b.name){
-                            return -1;
-                        }
-                        if(b.name>a.name){
-                            return 1;
-                        }
-                        return 0;
-                    })
-                    return{
-                        ...state,
-                        videogames:sortArr
-                    }
+                            let sortedArr = action.payload === 'asc'?
+                            state.videogames.sort(function(a,b){
+                                if (a.name> b.name){
+                                    return 1;
+                                }
+                                if (b.name>a.name){
+                                    return -1;
+                                }
+                                return 0;
+                            }) : // sino.....
+                            state.videogames.sort(function(a,b){
+                                if(a.name>b.name){
+                                    return -1;
+                                }
+                                if (b.name>a.name){
+                                    return 1;
+                                }
+                                return 0;
+                            })
+                            return {
+                                ...state,
+                                videogames:sortedArr
+                            }
                     case GET_NAME_VIDEOGAMES:
                         return{
                             ...state,

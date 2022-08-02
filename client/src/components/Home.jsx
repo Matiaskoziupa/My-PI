@@ -6,6 +6,7 @@ import {getVideogames, getGenres, filterByGenre, filterByRating, filterCreated, 
 import Card from "./Card";
 import SearchBar from "./SearchBar"
 import Paginado from "./Paginado";
+import "./Home.css";
 
 export default function Home(){
 const dispatch = useDispatch();
@@ -64,9 +65,8 @@ dispatch(getVideogames());
     }
     return(
         <div>
-            
             <Link to="/videogames"><button>Create videogame</button></Link>
-            <h1>Welcome to my page</h1>
+            <h1 className="title2">Welcome to my page</h1>
             <h3><SearchBar/></h3>
             <button onClick={(e)=>handleClick(e)}>Reload all games</button>
             <select onChange={e=>handlefilterCreated(e)}>
@@ -119,6 +119,7 @@ dispatch(getVideogames());
                     </div>
                 );
             })}
+            
         </div>
     )
 }

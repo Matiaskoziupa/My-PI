@@ -54,7 +54,7 @@ export function filterByRating(payload){
 export function orderByName(payload){
     return{
         type:"ORDER_BY_NAME",
-        payload:payload
+        payload
     }
 }
 export function getNameVideogames(payload){
