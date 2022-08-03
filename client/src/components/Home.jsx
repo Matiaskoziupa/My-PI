@@ -9,31 +9,32 @@ import Paginado from "./Paginado";
 import "./Home.css";
 
 export default function Home(){
-const dispatch = useDispatch();
-let allGames = useSelector((state)=> state.videogames)//trae del reducer 
-console.log(allGames)
- const [currentPage,setCurrentPage]= useState(1) //pag x local states
- const [videosPerPage,setVideosPerPage]= useState(15) //cuantos games x pagina
+    const dispatch = useDispatch();
+    let allGames = useSelector((state)=> state.videogames)//trae del reducer 
+    console.log(allGames)
+    const [currentPage,setCurrentPage]= useState(1) //pag x local states
+    const [videosPerPage,setVideosPerPage]= useState(15) //cuantos games x pagina
 
 //  const videosPerPage=15
 
- const indexOflastvideo = currentPage * videosPerPage
- const indexOfFirstVideo =indexOflastvideo - videosPerPage
- const currentVideos = allGames?.slice(indexOfFirstVideo, indexOflastvideo) 
+    const indexOflastvideo = currentPage * videosPerPage
+    const indexOfFirstVideo =indexOflastvideo - videosPerPage
+    const currentVideos = allGames?.slice(indexOfFirstVideo, indexOflastvideo) 
 
- const paginado= (pageNumber)=> {
-     setCurrentPage(pageNumber)
- }
+    const paginado= (pageNumber)=> {
+        setCurrentPage(pageNumber)
+    }
+//  const dispatch = useDispatch();
 
 
- useEffect(()=>{
-    dispatch(getVideogames());
-},[dispatch])
+    useEffect(()=>{
+        dispatch(getVideogames());
+    },[dispatch])
 
       
     function handleClick(e){
-e.preventDefault();
-dispatch(getVideogames());
+        e.preventDefault();
+        dispatch(getVideogames());
     }
     
     function handleFilterByGenre (e) {
@@ -53,8 +54,9 @@ dispatch(getVideogames());
     function handlefilterorderbyRating(e){
         e.preventDefault();
         dispatch(filterByRating(e.target.value))
-        setCurrentPage(1)
         setOrden(`Ordenado ${e.target.value}`)
+        setCurrentPage(1)
+        // setOrden(`Ordenado ${e.target.value}`)
     }
     const [orden, setOrden]= useState("")
     function handleSort(e){
@@ -66,22 +68,24 @@ dispatch(getVideogames());
     return(
         <div>
             <Link to="/videogames"><button>Create videogame</button></Link>
-            <h1 className="title2">Welcome to my page</h1>
-            <h3><SearchBar/></h3>
+            <h1>Welcome to my page</h1>
+            <h3><SearchBar
+            setCurrentPage={setCurrentPage}
+            setVideosPerPage={setVideosPerPage}
+            /></h3>
             <button onClick={(e)=>handleClick(e)}>Reload all games</button>
             <select onChange={e=>handlefilterCreated(e)}>
-                <option value="alpha">Sort created-all</option>
-                <option value="All"> All</option>
+                <option value="All">Sort created-all</option>
+                <option value="alpha"> All</option>
                 <option value="created"> created</option>
-            </select>
-            <select onChange={e=>handleSort(e)}>
-                
-                <option value="asc">Sort:  A - Z</option>
-                <option value="desc">Sort:  Z - A</option>         
             </select>
             <select onChange={(e)=>handlefilterorderbyRating(e)}>
                 <option value="asc">Low to high</option>
                 <option value="desc">High to low</option>
+            </select>
+            <select onChange={(e)=>handleSort(e)}>
+                <option value="mas">Sort:  A - Z</option>
+                <option value="menos">Sort:  Z - A</option>         
             </select>
             <select onChange={e=>handleFilterByGenre(e)} >  
                 <option value="All">All</option>

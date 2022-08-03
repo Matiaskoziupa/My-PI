@@ -3,7 +3,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getNameVideogames } from "../actions";
 
-export default function SearchBar(){
+
+export default function SearchBar({setCurrentPage, setVideosPerPage}){
     const dispatch=useDispatch()
     const [name, setName]=useState("")
 
@@ -15,7 +16,10 @@ export default function SearchBar(){
     function handleSubmit(e){
         e.preventDefault()
         dispatch(getNameVideogames(name))
+        setCurrentPage(1)
+        setVideosPerPage(15)
         setName("")
+        
     }
 
     return(

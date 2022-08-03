@@ -383,10 +383,10 @@ const router = Router();
 
 
 
-const URL = 'https://api.rawg.io/api/games'
+const URL = "https://api.rawg.io/api/games"
 
 
-router.get('/videogames', async (req, res) => {
+router.get("/videogames", async (req, res) => {
     let videogamesDb = await Videogame.findAll({
         include: Genre
     });
@@ -448,7 +448,7 @@ router.get('/videogames', async (req, res) => {
 
 
 // GET /videogame/:idVideoGame
-router.get('/videogame/:idVideogame', async (req, res) => {
+router.get("/videogame/:idVideogame", async (req, res) => {
 const { idVideogame } = req.params
 if (idVideogame.includes('-')) {
     let videogameDb = await Videogame.findOne({
@@ -508,7 +508,7 @@ router.get("/genres", async (req, res)=>{
 })
 //POST a /videogame
 
-router.post('/videogame', async (req, res, next) => {
+router.post("/videogame", async (req, res, next) => {
 // const {background_image, name, released, genres, rating, description, platforms} = req.body;
 // try {
 //     const newVideogame = await Videogame.create({
