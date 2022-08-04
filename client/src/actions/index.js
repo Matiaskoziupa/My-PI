@@ -7,6 +7,7 @@ export const GET_GENRES="GET_GENRES";
 export const FILTER_BY_GENRE="FILTER_BY_GENRE";
 export const GET_NAME_VIDEOGAMES="GET_NAME_VIDEOGAMES";
 export const GET_DETAIL="GET_DETAIL";
+export const GET_CLEAN="GET_CLEAN";
 
 export function getVideogames(){
     return async function(dispatch){
@@ -82,6 +83,11 @@ export function getDetail(id){
         } catch(error){
             console.log(error)
         }
+    }
+}
+export function getClean(){
+    return {
+        type: "GET_CLEAN"
     }
 }
 

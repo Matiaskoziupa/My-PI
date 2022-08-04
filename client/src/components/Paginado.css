@@ -1,0 +1,26 @@
+.page li { 
+    margin-top: 0.15rem;
+    margin-bottom: -0.5%;
+  display: inline-flex;
+  background-color: rgba(8, 1, 1, 0.388); 
+  
+}
+.btn{
+    font-family: 'Press Start 2P';
+    border: 1px solid rgba(65, 26, 76, 0.797);
+    padding: 0.6rem;
+    margin: 6px;
+    font-size: 9px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto;
+    /* text-transform: uppercase; */
+    border-radius: 3px;
+    font-weight: 600;
+    cursor: pointer;
+    background: transparent;
+    color:rgb(123, 110, 181);
+}
+    
+    .btn:hover {
+      box-shadow: 0 20px 40px +24px rgba(133, 104, 104, 0.25);
+    }

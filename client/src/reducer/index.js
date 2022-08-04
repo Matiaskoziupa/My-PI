@@ -1,4 +1,4 @@
-import {GET_VIDEOGAMES, FILTER_CREATED, FILTER_BY_RATING, ORDER_BY_NAME, GET_GENRES, FILTER_BY_GENRE, GET_NAME_VIDEOGAMES, GET_DETAIL} from "../actions/index.js";
+import {GET_VIDEOGAMES, FILTER_CREATED, FILTER_BY_RATING, ORDER_BY_NAME, GET_GENRES, FILTER_BY_GENRE, GET_NAME_VIDEOGAMES, GET_DETAIL, GET_CLEAN} from "../actions/index.js";
 
 
 const initialState = {
@@ -124,6 +124,11 @@ function rootReducer(state=initialState, action){
                                         videogames : genreFilter
                         
                                     };
+                                    case GET_CLEAN:
+                                        return {
+                                            ...state,
+                                            payload:{}
+                                        }
                                     
                                     default:
                                         return{

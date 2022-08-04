@@ -21,4 +21,10 @@ describe('Videogame routes', () => {
       agent.get('/videogames').expect(200)
     );
   });
+  // describe("GET/videogame/:idVideogame", ()=>{
+  //   it("200 OK if the videogame loaded", (done)=>{
+  //     agent.get("/videogame/:idVideogame").expect(200);
+  //     done();
+  //   }).timeout(2000);
+  // })
 });

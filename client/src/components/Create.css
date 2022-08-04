@@ -1,0 +1,76 @@
+.createTop{
+    font-size: medium;
+     /* font-family: 'Press Start 2P'; */
+    color: #a49a9a;
+    box-shadow: #000000;
+    display: flex;
+    flex-direction: column;
+    font-weight: 1000px;
+    /* margin-bottom: 10%; */
+    /* gap:1rem; */
+ }
+ 
+ /* .listof{display:inline-flex;
+ 
+ } */
+
+ .Createcontainer{
+     
+     box-shadow: 0 20px 40px +14px rgba(155, 19, 19, 0.25);
+     opacity:0.9;
+     background: linear-gradient(to bottom, rgba(53, 42, 255, 0.181) 0%,rgba(33,33,32,1) 60%,rgba(33,33,32,1) 100%);
+     background-color: rgb(3, 3, 3);
+     border-color: #000000;
+     border-radius: 10px;
+     box-shadow: 0 20px 40px -14px rgba(255, 243, 243, 0.25);
+     color: #a49a9a;
+     
+     width:500px;
+    height: inherit;
+     gap:3px;
+     display:flex;
+  flex-direction: column;
+   align-self: center;
+   flex-wrap: wrap;
+   align-items: flex-start;
+   
+ padding-top: 1rem;
+ padding-inline: 1rem;
+ padding-right: 0rem;
+ }
+ 
+ .btn4{ 
+     background-color: rgba(149, 34, 169, 0.299); 
+     border-radius: 8px;
+     border: 3px solid rgba(183, 174, 174, 0.2);
+     padding: 0.5rem;
+     font-size: 12px;
+     /* text-transform: uppercase; */
+     font-weight: 900;
+     cursor: pointer;
+     /* height: fit-content; */
+    width: 20%;
+    margin-left: 75%;
+    /* font-family: 'Press Start 2P'; */
+    /* margin-bottom: 0.9rem; */
+    color:rgba(112, 132, 132, 0.698);
+ }
+ .btn3{ 
+     background-color: rgba(149, 34, 169, 0.299); 
+     border-radius: 8px;
+     border: 2px solid rgba(183, 174, 174, 0.2);
+     font-size: 12px;
+     /* text-transform: uppercase; */
+     font-weight: 900;
+     cursor: pointer;
+    margin-right: 90%;
+    /* font-family: 'Press Start 2P'; */
+    /* padding: 0.4em; */
+    color:rgba(112, 132, 132, 0.698);  
+ }
+ .btn3:hover {
+     background-color: rgba(45, 14, 48, 0.692);
+   }
+   .btn4:hover {
+     background-color: rgba(45, 14, 48, 0.692);
+   }

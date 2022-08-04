@@ -67,27 +67,29 @@ export default function Home(){
     }
     return(
         <div>
-            <Link to="/videogames"><button>Create videogame</button></Link>
-            <h1>Welcome to my page</h1>
-            <h3><SearchBar
+            <Link to="/videogames"><button className="btn2">Create videogame</button></Link>
+            <h1 className="titles">Welcome to my page</h1>
+           
+            <div className="options1">
+            <h3><SearchBar className="searchInput"
             setCurrentPage={setCurrentPage}
             setVideosPerPage={setVideosPerPage}
             /></h3>
-            <button onClick={(e)=>handleClick(e)}>Reload all games</button>
-            <select onChange={e=>handlefilterCreated(e)}>
+            <button className="btn2reload" onClick={(e)=>handleClick(e)}>Reload all games</button>
+            <select className="select" onChange={e=>handlefilterCreated(e)}>
                 <option value="All">Sort created-all</option>
                 <option value="alpha"> All</option>
                 <option value="created"> created</option>
             </select>
-            <select onChange={(e)=>handlefilterorderbyRating(e)}>
+            <select className="select" onChange={(e)=>handlefilterorderbyRating(e)}>
                 <option value="asc">Low to high</option>
                 <option value="desc">High to low</option>
             </select>
-            <select onChange={(e)=>handleSort(e)}>
+            <select className="select" onChange={(e)=>handleSort(e)}>
                 <option value="mas">Sort:  A - Z</option>
                 <option value="menos">Sort:  Z - A</option>         
             </select>
-            <select onChange={e=>handleFilterByGenre(e)} >  
+            <select className="select" onChange={e=>handleFilterByGenre(e)} >  
                 <option value="All">All</option>
                 <option value="Action">Action</option>
                 <option value="Adventure">Adventure</option>
@@ -109,6 +111,7 @@ export default function Home(){
                 <option value="Sports">Sports</option>
                 <option value="Strategy">Strategy</option>
             </select >
+            </div>
             <Paginado
             videosPerPage={videosPerPage}
             allGames={allGames?.length}
@@ -116,7 +119,7 @@ export default function Home(){
             />
             {currentVideos&&currentVideos.map((s)=>{
                 return(
-                    <div>
+                    <div className="CONTAINER">
                         <Link key={s.id} to={`/videogame/${s.id}`}>
                             <Card name={s.name} image={s.background_image} genres={s.genres}/>
                         </Link>

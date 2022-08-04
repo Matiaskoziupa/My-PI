@@ -1,0 +1,87 @@
+
+.CONTAINER{
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+grid-template-rows: auto;
+grid-gap: 20px;
+align-items: stretch;
+ justify-content: center;
+ padding: 9px;
+ opacity:0.9px;
+
+}
+.options{ 
+ font-family: 'Press Start 2P';
+ font-weight: 00;
+ letter-spacing: 0;
+ padding: 1rem;
+ background-color: #000000;
+}
+
+
+body {
+ flex-grow: 1;
+ font-family: 'Ubuntu', sans-serif;
+ font-weight: 100;
+ letter-spacing: 0.8px;
+ padding: 1rem;
+ align-items: center;
+ text-align: center;
+ background-position: center; /* Center the image */
+ background-repeat: no-repeat; /* Do not repeat the image */
+ background-size: cover; 
+overscroll-behavior-block:inherit;
+
+}
+h2 { box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+    
+    text-align:center;
+    font-size:small;
+    font-family: 'Ubuntu', sans-serif;
+    text-transform: uppercase;
+    
+}
+.img { box-shadow: 0 20px 40px +14px rgba(8, 3, 11, 0.912);
+ margin-top: 5%;
+width: 70%;
+ height:180px;
+ display: flex;
+ align-self: center;
+ cursor: pointer;
+flex-wrap: wrap;
+margin-right: auto;
+}
+
+.card {
+    opacity:0.9;
+    background: linear-gradient(to bottom, rgba(53, 42, 255, 0.181) 0%,rgba(33,33,32,1) 60%,rgba(33,33,32,1) 100%);
+    background-color: rgba(12, 12, 12, 0.336);
+    border-radius: 7px;
+    box-shadow: 0 20px 40px -14px rgba(255, 243, 243, 0.25);
+    color: #a49a9a;
+    padding: 0 10px 10px;
+    font-family: 'Ubuntu', sans-serif;
+    display: flex;
+    flex-direction: column;
+    
+  
+  }
+  .card_items{
+    
+    
+    border-radius: 9px;
+    box-shadow: 0 20px 40px -14px rgba(15, 1, 1, 0.25);
+    color: #727171;
+    letter-spacing: 1px;
+    flex-direction: column;
+    font-family: 'Ubuntu', sans-serif;
+    width: 100%;
+   
+  }
+
+
+
+
+
+
+  

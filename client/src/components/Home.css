@@ -1,0 +1,76 @@
+.titles{ padding-top: 0;
+    color:rgb(136, 156, 156);
+    font-size:35px;
+}
+.searchInput{
+    background-color:rgba(34, 30, 30, 0.666);
+    padding-bottom: 1rem;
+    color:rgb(125, 177, 177);
+    font-size:medium;
+    
+    display: grid;
+    grid-gap: 20px;
+    align-items: stretch;
+ 
+}
+.options1{
+    /* cursor: pointer; */
+    background-color: rgba(8, 1, 1, 0.64); 
+    /* gap:1rem; */
+    /* box-shadow: 0 20px 80px +14px rgba(8, 3, 11, 0.912); */
+
+}
+.select{
+    border-radius: 5px;
+    color:rgb(136, 156, 156);
+    border: 2px solid rgba(183, 174, 174, 0.2);
+   background-color: transparent;
+   cursor: pointer;
+   opacity: 8px;
+    box-shadow: 0 20px 40px +14px rgba(8, 3, 11, 0.912);
+border-color: black;
+border-radius: 0.8rem;
+height: 2rem;
+width: 20%;
+
+}
+.btn2{
+    color:rgba(112, 132, 132, 0.698);
+    font-family: 'Press Start 2P';
+    border: 3px solid rgba(65, 26, 76, 0.797);
+    font-size: 12px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    font-weight: 400;
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: rgba(149, 34, 169, 0.299); 
+    border-radius: 8px;
+    border: 3px solid rgba(183, 174, 174, 0.2);
+    padding: 0.5rem;
+    
+    
+   }
+   .btn2reload{
+    color:rgba(112, 132, 132, 0.698);
+    font-family: 'Press Start 2P';
+    border: 3px solid rgba(65, 26, 76, 0.797);
+    font-size: 12px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    font-weight: 400;
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: rgba(149, 34, 169, 0.299); 
+    border-radius: 8px;
+    border: 3px solid rgba(183, 174, 174, 0.2);
+    padding: 0.5rem;
+    
+    
+   }
+   .btn2reload:hover {
+    background-color: rgba(45, 14, 48, 0.692);
+  }
+  .btn2:hover {
+    background-color: rgba(45, 14, 48, 0.692);
+  }

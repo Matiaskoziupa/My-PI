@@ -1,0 +1,77 @@
+.imge{
+    margin-top: 2rem;
+    height: 200px;
+    width: 30%;
+    border-radius: 9px;
+    /* display: flex; */
+    align-self: flex-end;
+    /* box-shadow: 0 20px 40px +14px rgba(8, 3, 11, 0.912); */
+}
+.imge:hover{
+    /* transition: cubic-bezier(0.075, 0.82, 0.165, 1); */
+    
+    
+      box-shadow: 0 20px 40px +24px rgba(133, 104, 104, 0.25);
+    }
+
+.infocard{
+    box-shadow: 0 20px 40px +14px rgba(0, 0, 0, 0.25);
+    opacity:0.9;
+    background: linear-gradient(rgba(53, 42, 255, 0.181) 0%,rgba(33,33,32,1) 60%,rgba(33,33,32,1) 100%);
+    background-color: rgb(3, 3, 3);
+    border-color: #000000;
+    border-radius: 8px;
+    /* box-shadow: 0 20px 40px -14px rgba(255, 243, 243, 0.25); */
+    color: #a49a9a;
+    margin: 2px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    max-height: 35rem;
+   max-width: 200rem;
+  }
+  .info2{
+    height: 200px;
+    width: 100%;
+    padding: 0.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.info1{ 
+    height: 70px;
+    /* padding-top: 0.05rem; */
+    /* padding-left: 1rem; */
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+  
+   
+}
+/* .p{
+    justify-self: center;
+    font-size: small;
+} */
+.h1{
+    font-family: 'Press Start 2P';
+    /* text-transform: uppercase; */
+}
+
+
+.btnDe{
+    background-color: rgba(149, 34, 169, 0.299); 
+     border-radius: 8px;
+     border: 2px solid rgba(183, 174, 174, 0.2);
+     font-size: 12px;
+     /* text-transform: uppercase; */
+     font-weight: 900;
+     cursor: pointer;
+    margin-right: 90%;
+    /* font-family: 'Press Start 2P'; */
+    /* padding: 0.4em; */
+    color:rgba(112, 132, 132, 0.698);
+}
+.btnDe:hover {
+    background-color: rgba(45, 14, 48, 0.692);
+    /* box-shadow: 0 20px 40px +24px rgba(133, 104, 104, 0.25); */
+  }

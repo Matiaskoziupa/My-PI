@@ -191,6 +191,7 @@ import { useEffect, useState } from "react";
 import {Link, useHistory} from "react-router-dom";
 import { postVideogames, getGenres } from "../actions";
 import { useDispatch, useSelector } from "react-redux";
+import "./Create.css";
 
 function validate(input){
     let errors = {}
@@ -331,11 +332,11 @@ export default function Create(){
     }
 
     return(
-        <div>
+        <div className="createTop">
             
-            <Link to="/home"><button>Back</button></Link>
+            <Link to="/home"><button className="btn3">Back</button></Link>
             <h1>Create your videogame</h1>
-            <form onSubmit={(e)=>handleSubmit(e)}>
+            <form className="Createcontainer" onSubmit={(e)=>handleSubmit(e)}>
                 <div>
                     <label>Name:</label>
                     <input
@@ -401,15 +402,17 @@ export default function Create(){
                     {platforms.map(pl => <option value={pl}>{pl}</option>)}
                     </select>
                 </div>
-                <label>Genres:</label>
+                <div>
+                <label >Genres:</label>
                 <select required name="genres" onChange={(e)=>handleSelect(e)}>
                     {genres&&genres.map((s)=>(
                         <option value={s.name}>{s.name}</option>
                     ))}
                 </select>
+                </div>
                 <ul><li> {input.platforms.map(g=> g + ",")}</li></ul>
                 <ul><li>{input.genres.map(s=>s + ",")}</li></ul>
-                <button type="submit">Create videogame</button>
+                <button className="btn4" type="submit">Create videogame</button>
             </form>
         </div>
     )
