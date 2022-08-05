@@ -1,16 +1,4 @@
-// import React from "react";
 
-// export default function card({name, image, genres, id}){
-//     return(
-//         <div>
-//             <h3>{name}</h3>
-//             <a href={`/videogame/${id}`}><img src={image} alt="Not found" width="250px" height="200px" /></a>
-//             <h5>`{genres.join(" | ")}`</h5>
-//             {/* <img src={image} alt="Not found" width="250px" height="200px" /> */}
-//         </div>
-//     );
-
-// }
 import React from "react";
 import { useLinkClickHandler } from "react-router-dom";
 

@@ -21,7 +21,7 @@ export default function SearchBar({setCurrentPage, setVideosPerPage}){
             alert('Enter a word before searching...')
         }
         setName("")
-        // setCurrent(1)
+        
     }
   
 
@@ -31,7 +31,6 @@ export default function SearchBar({setCurrentPage, setVideosPerPage}){
             type="text"
             placeholder="Search..."
             onChange={(e)=>handleInputChange(e)}
-            // onKeyDown={(e)=>onKeyDownHandler(e)}
             />
             <button type="submit" onClick={(e)=>handleSubmit(e)}>Search</button>
         </div>

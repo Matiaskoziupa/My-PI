@@ -24,7 +24,7 @@ export default function Home(){
     const paginado= (pageNumber)=> {
         setCurrentPage(pageNumber)
     }
-//  const dispatch = useDispatch();
+
 
 
     useEffect(()=>{
@@ -56,9 +56,9 @@ export default function Home(){
         dispatch(filterByRating(e.target.value))
         setOrden(`Ordenado ${e.target.value}`)
         setCurrentPage(1)
-        // setOrden(`Ordenado ${e.target.value}`)
+        
     }
-    // const [orden, setOrden]= useState("")
+   
     function handleSort(e){
         e.preventDefault()
         dispatch(orderByName(e.target.value));

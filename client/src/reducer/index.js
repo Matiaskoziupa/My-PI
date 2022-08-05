@@ -23,30 +23,6 @@ function rootReducer(state=initialState, action){
                     ...state,
                     videogames:action.payload === "All" ? state.allVideogames : createdFilter
                 }
-                // case ORDER_BY_NAME:
-                //     let sortArr = action.payload === "asc"? 
-                //     state.videogames.sort(function(a,b){
-                //         if( a.name > b.name){
-                //             return 1;
-                //         }   
-                //         if(b.name > a.name){
-                //             return -1;
-                //         }
-                //         return 0;
-                //     }): 
-                //     state.videogames.sort(function(a,b){
-                //         if(a.name>b.name){
-                //             return -1;
-                //         }
-                //         if(b.name>a.name){
-                //             return 1;
-                //         }
-                //         return 0;
-                //     })
-                //     return{
-                //         ...state,
-                //         videogames:sortArr
-                //     }
                     case FILTER_BY_RATING:
                         let sortedArr2 = action.payload === 'asc'?
                         state.videogames.sort(function(a,b){
@@ -122,7 +98,6 @@ function rootReducer(state=initialState, action){
                                     return {
                                         ...state,
                                         videogames : genreFilter
-                        
                                     };
                                    
                                     default:
