@@ -15,12 +15,15 @@ export default function SearchBar({setCurrentPage, setVideosPerPage}){
     }
     function handleSubmit(e){
         e.preventDefault()
-        dispatch(getNameVideogames(name))
-        setCurrentPage(1)
-        setVideosPerPage(15)
+        if(name.length!==0){
+            dispatch(getNameVideogames(name))
+        }else {
+            alert('Enter a word before searching...')
+        }
         setName("")
-        
+        // setCurrent(1)
     }
+  
 
     return(
         <div>
@@ -28,6 +31,7 @@ export default function SearchBar({setCurrentPage, setVideosPerPage}){
             type="text"
             placeholder="Search..."
             onChange={(e)=>handleInputChange(e)}
+            // onKeyDown={(e)=>onKeyDownHandler(e)}
             />
             <button type="submit" onClick={(e)=>handleSubmit(e)}>Search</button>
         </div>

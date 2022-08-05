@@ -1,4 +1,6 @@
 .page li { 
+    display: inline-flex;
+    font-weight: bolder;
     margin-top: 0.15rem;
     margin-bottom: -0.5%;
   display: inline-flex;
@@ -6,6 +8,8 @@
   
 }
 .btn{
+    
+    align-content: center;
     font-family: 'Press Start 2P';
     border: 1px solid rgba(65, 26, 76, 0.797);
     padding: 0.6rem;

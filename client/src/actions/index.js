@@ -7,7 +7,8 @@ export const GET_GENRES="GET_GENRES";
 export const FILTER_BY_GENRE="FILTER_BY_GENRE";
 export const GET_NAME_VIDEOGAMES="GET_NAME_VIDEOGAMES";
 export const GET_DETAIL="GET_DETAIL";
-export const GET_CLEAN="GET_CLEAN";
+
+
 
 export function getVideogames(){
     return async function(dispatch){
@@ -34,12 +35,7 @@ export function postVideogames(payload){
         return json;
     }
 }
-export function filterByGenre(payload) {
-    return {
-        type: "FILTER_BY_GENRE",
-        payload
-    }
-}
+
 export function filterCreated(payload){
     return {
         type: "FILTER_CREATED",
@@ -58,6 +54,12 @@ export function orderByName(payload){
         payload
     }
 }
+export function filterByGenre(payload) {
+    return {
+        type: "FILTER_BY_GENRE",
+        payload
+    }
+}
 export function getNameVideogames(payload){
     return async function(dispatch){
         try{
@@ -67,7 +69,7 @@ export function getNameVideogames(payload){
                 payload:json.data
             })
         } catch(error){
-            console.log("getNameVideogames"+ error);
+            window.alert(error.response.data);
         }
     }
 }
@@ -85,11 +87,8 @@ export function getDetail(id){
         }
     }
 }
-export function getClean(){
-    return {
-        type: "GET_CLEAN"
-    }
-}
+
+
 
 
 

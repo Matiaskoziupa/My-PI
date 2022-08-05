@@ -53,13 +53,16 @@ margin-right: auto;
 }
 
 .card {
+    width: 300px;
+    height: 370px;
+    margin: 10px;
     opacity:0.9;
     background: linear-gradient(to bottom, rgba(53, 42, 255, 0.181) 0%,rgba(33,33,32,1) 60%,rgba(33,33,32,1) 100%);
     background-color: rgba(12, 12, 12, 0.336);
     border-radius: 7px;
-    box-shadow: 0 20px 40px -14px rgba(255, 243, 243, 0.25);
+    /* box-shadow: 0 20px 40px -14px rgba(255, 243, 243, 0.25); */
     color: #a49a9a;
-    padding: 0 10px 10px;
+    padding: 10px;
     font-family: 'Ubuntu', sans-serif;
     display: flex;
     flex-direction: column;
@@ -73,12 +76,19 @@ margin-right: auto;
     box-shadow: 0 20px 40px -14px rgba(15, 1, 1, 0.25);
     color: #727171;
     letter-spacing: 1px;
-    flex-direction: column;
+    /* flex-direction: column; */
+    width:250px;
+    height:200px;
+    margin: 15px;
     font-family: 'Ubuntu', sans-serif;
     width: 100%;
    
   }
-
+.card_items img{
+    border-radius: 8px;
+    width: 90%;
+    height: 190px;
+}
 
 
 

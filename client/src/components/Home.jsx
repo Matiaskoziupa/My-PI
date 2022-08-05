@@ -36,21 +36,21 @@ export default function Home(){
         e.preventDefault();
         dispatch(getVideogames());
     }
+    function handlefilterCreated (e){
+        e.preventDefault();
+        dispatch(filterCreated(e.target.value)) 
+        setCurrentPage(1) 
+    }
     
     function handleFilterByGenre (e) {
         e.preventDefault();
         dispatch(filterByGenre(e.target.value))
         setCurrentPage(1)
         setVideosPerPage(15)
-     
     }
 
-    function handlefilterCreated (e){
-        e.preventDefault();
-        dispatch(filterCreated(e.target.value)) 
-        setCurrentPage(1) 
-    }
-    // const [orden, setOrden]= useState("")
+   
+    const [orden, setOrden]= useState("")
     function handlefilterorderbyRating(e){
         e.preventDefault();
         dispatch(filterByRating(e.target.value))
@@ -58,7 +58,7 @@ export default function Home(){
         setCurrentPage(1)
         // setOrden(`Ordenado ${e.target.value}`)
     }
-    const [orden, setOrden]= useState("")
+    // const [orden, setOrden]= useState("")
     function handleSort(e){
         e.preventDefault()
         dispatch(orderByName(e.target.value));
@@ -71,7 +71,7 @@ export default function Home(){
             <h1 className="titles">Welcome to my page</h1>
            
             <div className="options1">
-            <h3><SearchBar className="searchInput"
+            <h3><SearchBar
             setCurrentPage={setCurrentPage}
             setVideosPerPage={setVideosPerPage}
             /></h3>
@@ -117,16 +117,17 @@ export default function Home(){
             allGames={allGames?.length}
             paginado={paginado}
             />
+            <div className="CONTAINER">
             {currentVideos&&currentVideos.map((s)=>{
                 return(
-                    <div className="CONTAINER">
+                   
                         <Link key={s.id} to={`/videogame/${s.id}`}>
                             <Card name={s.name} image={s.background_image} genres={s.genres}/>
                         </Link>
-                    </div>
+                    
                 );
             })}
-            
+            </div>
         </div>
     )
 }

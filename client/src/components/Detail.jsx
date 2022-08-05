@@ -44,26 +44,26 @@
 import React from "react";
 import {Link} from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux";
-import { getDetail, getClean } from "../actions";
+import { getDetail } from "../actions";
 import { useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import "./Detail.css";
 
 
 export default function Detail(){
-  
+    const dispatch= useDispatch();
     const myVideo= useSelector((state)=>state.detail);
-const dispatch= useDispatch();
+// const dispatch= useDispatch();
 const {id} = useParams();
 useEffect(()=>{
     dispatch(getDetail(id))
 },[dispatch,id])
 
-useEffect(()=>{
-    return ()=>{
-        dispatch(getClean())
-    }
-}, []);
+// useEffect(()=>{
+//     return ()=>{
+//         dispatch(getClean())
+//     }
+// }, []);
 
 
     return (
@@ -74,7 +74,6 @@ useEffect(()=>{
             <div className="infocard">
                 <div className=" info1">
                     <h1 className="h1">{myVideo&&myVideo.name}</h1>
-                    
                     <h5>Platforms: {myVideo&&myVideo.platforms?.join(" | ")} </h5>
                     <h2>Genres: {myVideo&&myVideo.genres?.join(" | ")} </h2>
                     <h4>Released: {myVideo&&myVideo.releaseDate}  {myVideo&&myVideo.released}</h4>

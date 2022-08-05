@@ -1,4 +1,4 @@
-import {GET_VIDEOGAMES, FILTER_CREATED, FILTER_BY_RATING, ORDER_BY_NAME, GET_GENRES, FILTER_BY_GENRE, GET_NAME_VIDEOGAMES, GET_DETAIL, GET_CLEAN} from "../actions/index.js";
+import {GET_VIDEOGAMES, FILTER_CREATED, FILTER_BY_RATING, ORDER_BY_NAME, GET_GENRES, FILTER_BY_GENRE, GET_NAME_VIDEOGAMES, GET_DETAIL} from "../actions/index.js";
 
 
 const initialState = {
@@ -98,7 +98,7 @@ function rootReducer(state=initialState, action){
                     case GET_NAME_VIDEOGAMES:
                         return{
                             ...state,
-                            videogames:action.payload.err?[{Error:"No videogames Found"}] : action.payload,
+                            videogames:action.payload.error?[{Error:"No videogames Found"}] : action.payload,
                         }
                         case GET_DETAIL:
                                         return {
@@ -116,7 +116,7 @@ function rootReducer(state=initialState, action){
                                 } 
                                 case FILTER_BY_GENRE:
                                     const videogamesToFilterByGenre = state.allVideogames;
-                                    const genreFilter = action.payload === 'All' ?
+                                    const genreFilter = action.payload === "All" ?
                                     videogamesToFilterByGenre :
                                     videogamesToFilterByGenre.filter(s => s.genres.includes(action.payload))
                                     return {
@@ -124,12 +124,7 @@ function rootReducer(state=initialState, action){
                                         videogames : genreFilter
                         
                                     };
-                                    case GET_CLEAN:
-                                        return {
-                                            ...state,
-                                            payload:{}
-                                        }
-                                    
+                                   
                                     default:
                                         return{
                                             state

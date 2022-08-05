@@ -23,7 +23,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
     rating:{
-      type: DataTypes.REAL,
+      type: DataTypes.INTEGER,
     },
     platforms:{
       type: DataTypes.ARRAY(DataTypes.STRING),

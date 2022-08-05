@@ -267,6 +267,7 @@ export default function Create(){
         })
         history.push("/home")
     }
+   
 
     useEffect(()=>{
         dispatch(getGenres())
@@ -324,12 +325,37 @@ export default function Create(){
         "Game Gear",
         "Neo Geo",
     ];
-    function handleChangePlatforms(e) {
+    // function handleChangePlatforms(e) {
+    //     setInput({
+    //         ...input,
+    //         platforms:[...input.platforms, e.target.value]
+    //     }     )
+    // }
+    function handleChangePlatforms(e){
+        const platforms = input.platforms.includes(e.target.value) ? 
+        alert("equal platforms cannot be added"):  
         setInput({
             ...input,
-            platforms:[...input.platforms, e.target.value]
-        }     )
+            platforms: [...input.platforms, e.target.value] //si quiero muchos ponerlo asi [...input.temperament,e.target.value]
+        })
     }
+    function handleDeletePlatforms(e){
+        e.preventDefault()
+        setInput({
+            ...input,
+            platforms: [] 
+        });
+        console.log(input)
+    }
+    function handleDeleteGenres(e){
+        e.preventDefault()
+        setInput({
+            ...input,
+            genres: [] 
+        });
+        console.log(input)
+    }
+    
 
     return(
         <div className="createTop">
@@ -411,8 +437,10 @@ export default function Create(){
                 </select>
                 </div>
                 <ul><li> {input.platforms.map(g=> g + ",")}</li></ul>
+                <button onClick={(e)=>handleDeletePlatforms(e)}>X</button>
                 <ul><li>{input.genres.map(s=>s + ",")}</li></ul>
-                <button className="btn4" type="submit">Create videogame</button>
+                <button onClick={(e)=>handleDeleteGenres(e)}>X</button>
+                <button className="btn4" type="submit" disabled={Object.entries(errors).length===0 ? false : true}>Create videogame</button>
             </form>
         </div>
     )

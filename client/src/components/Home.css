@@ -74,3 +74,9 @@ width: 20%;
   .btn2:hover {
     background-color: rgba(45, 14, 48, 0.692);
   }
+  .CONTAINER{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    /* flex-direction: column; */
+  }
